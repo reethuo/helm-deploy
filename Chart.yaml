@@ -1,6 +1,6 @@
 apiVersion: v2
-name: my-nginx-app
-description: A simple Nginx application deployed with Helm
+name: my-harness-app
+description: Application deployed with Harness
 type: application
-version: 0.1.0
+version: 1.0.0
 appVersion: "1.0.0"
