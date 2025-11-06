@@ -24,20 +24,3 @@ spec:
         - containerPort: {{ .Values.deployment.port }}
         resources:
           {{- toYaml .Values.resources | nindent 12 }}
-        env:
-        - name: APP_NAME
-          value: "{{ .Values.app.name }}"
-        - name: APP_VERSION  
-          value: "{{ .Values.app.version }}"
-        livenessProbe:
-          httpGet:
-            path: /
-            port: {{ .Values.deployment.port }}
-          initialDelaySeconds: 30
-          periodSeconds: 10
-        readinessProbe:
-          httpGet:
-            path: /
-            port: {{ .Values.deployment.port }}
-          initialDelaySeconds: 5
-          periodSeconds: 10
