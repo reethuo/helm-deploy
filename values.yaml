@@ -1,27 +1,22 @@
-# Default values for my-nginx-app
-replicaCount: 2
+# Application configuration
+app:
+  name: my-harness-app
+  version: "1.0.0"
 
-image:
-  repository: nginx
+# Deployment configuration
+deployment:
+  replicaCount: 2
+  image: nginx
   tag: "stable"
-  pullPolicy: IfNotPresent
+  port: 80
 
+# Service configuration  
 service:
   type: ClusterIP
   port: 80
   targetPort: 80
 
-ingress:
-  enabled: false
-  className: ""
-  annotations: {}
-  hosts:
-    - host: chart-example.local
-      paths:
-        - path: /
-          pathType: ImplementationSpecific
-  tls: []
-
+# Resource configuration
 resources:
   limits:
     cpu: 500m
@@ -30,8 +25,9 @@ resources:
     cpu: 250m
     memory: 256Mi
 
+# Auto-scaling
 autoscaling:
   enabled: false
   minReplicas: 1
   maxReplicas: 5
-  targetCPUUtilizationPercentage: 80
+  targetCPU: 80
