@@ -1,22 +1,18 @@
-# Application configuration
 app:
   name: my-harness-app
   version: "1.0.0"
 
-# Deployment configuration
 deployment:
   replicaCount: 2
   image: nginx
   tag: "stable"
   port: 80
 
-# Service configuration  
 service:
-  type: LoadBalancer
+  type: ClusterIP
   port: 80
   targetPort: 80
 
-# Resource configuration
 resources:
   limits:
     cpu: 500m
@@ -25,7 +21,6 @@ resources:
     cpu: 250m
     memory: 256Mi
 
-# Auto-scaling
 autoscaling:
   enabled: false
   minReplicas: 1
